@@ -1,3 +1,4 @@
+from s3_uploader import upload_summary
 import argparse
 import sqlite3
 import os
@@ -33,6 +34,12 @@ def main():
         print("Building demo environment...")
         build_demo()
         show_summary()
+        summary_data = {
+            "customers": 10,
+            "products": 5,
+            "transactions": 20
+        }
+        upload_summary(summary_data)
 
     elif args.command == "summary":
         show_summary()
